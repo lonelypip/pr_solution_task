@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from .models import Car
+from .models import Car, Order
 
 
 
@@ -13,3 +13,9 @@ class CarListSerializer(ModelSerializer):
     class Meta:
         model = Car
         fields = ('id','owner','name','year','date')
+
+
+class OrderCreateSerializer(ModelSerializer):
+    class Meta:
+        model = Order
+        fields = ('car',)

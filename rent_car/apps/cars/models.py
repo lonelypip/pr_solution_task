@@ -10,4 +10,13 @@ class Car(models.Model):
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.name
+        return f'{self.name} клиента {self.owner}, {self.year} года'
+
+
+class Order(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    car = models.ForeignKey(Car, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.user.username
