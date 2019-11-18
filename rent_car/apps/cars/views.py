@@ -33,15 +33,6 @@ class OrderCreateView(CreateAPIView):
     serializer_class = OrderCreateSerializer
     permission_classes = (IsAuthenticated,)
 
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
-
-
-class OrderCommentView(CreateAPIView):
-    queryset = Order.objects.all()
-    serializer_class = OrderCreateSerializer
-    permission_classes = (IsAuthenticated,)
-
     def create(self, request, *args, **kwargs):
         if request.POST.get('pk'):
             pk = request.POST.get('pk')
